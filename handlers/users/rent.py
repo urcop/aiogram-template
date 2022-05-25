@@ -18,6 +18,8 @@ def rent_cost(rent):
         return 55
     elif rent == 'rent3':
         return 75
+    elif rent == 'rent12':
+        return 200
 
 
 @dp.message_handler(text=change_lang('Назад'), state=RentState.all_states)
