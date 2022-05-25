@@ -85,7 +85,7 @@ async def rent_choice(call: CallbackQuery, state: FSMContext):
                     f'Пользователь - {call.from_user.get_mention(as_html=True)}',
                     f'Api-key: <code>{req_data["api_key"]}</code>',
                     f'Secret-key: <code>{req_data["secret_key"]}</code>',
-                    f'Срок: {req_data["period"][3::]} мес',
+                    f'Срок: {req_data["period"][4::]} мес',
                 ]
                 await bot.send_message('-649646788', text='\n'.join(text))
                 await call.message.answer(__('Ваша заявка на получение подписки отправлена, скоро с вами свяжется '
