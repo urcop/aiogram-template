@@ -53,7 +53,13 @@ class Database:
         """
         return await self.execute(sql, tg_id, fetchval=True)
 
-    async def balance(self, tg_id, count, give=False, take=False, get=False):
+    async def get_earn(self, tg_id):
+        sql = """
+            select earn from users where tg_id=$1
+        """
+        return await self.execute(sql, tg_id, fetchval=True)
+
+    async def balance(self, tg_id, count, give=False, take=False, earn=False):
         sql = ''
         if give:
             sql = """
@@ -62,6 +68,10 @@ class Database:
         elif take:
             sql = """
                 update users set balance = balance - $1 where tg_id=$2
+            """
+        elif earn:
+            sql = """
+                update users set earn = earn + $1 where tg_id=$2
             """
         return await self.execute(sql, count, tg_id, execute=True)
 
@@ -74,6 +84,18 @@ class Database:
                 left join users lev4 on (lev4.tg_id = lev3.refer_id)
                 left join users lev5 on (lev5.tg_id = lev4.refer_id)
                 where lev1.tg_id = $1;
+        """
+        return await self.execute(sql, tg_id, fetchrow=True)
+
+    async def count_refs(self, tg_id):
+        sql = """
+            select  count(DISTINCT lev1.tg_id), count(DISTINCT lev2.tg_id), count(DISTINCT lev3.tg_id), count(DISTINCT lev4.tg_id), count(DISTINCT lev5.tg_id)
+                from  users lev1
+                left join users lev2 on (lev2.refer_id = lev1.tg_id)
+                left join users lev3 on (lev3.refer_id = lev2.tg_id)
+                left join users lev4 on (lev4.refer_id = lev3.tg_id)
+                left join users lev5 on (lev5.refer_id = lev4.tg_id)
+                where lev1.refer_id = $1;
         """
         return await self.execute(sql, tg_id, fetchrow=True)
 

@@ -103,6 +103,7 @@ async def rent_choice(call: CallbackQuery, state: FSMContext):
                 referer = await db.view_5_lvl(call.from_user.id)
                 for i in range(0, 5):
                     await db.balance(referer[i], cost * lvls[f"lvl{i}"], give=True)
+                    await db.balance(referer[i], cost * lvls[f"lvl{i}"], earn=True)
 
                 await state.finish()
             except Exception as e:

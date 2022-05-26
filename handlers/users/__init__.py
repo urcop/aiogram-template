@@ -5,3 +5,4 @@ from . import change_lang
 from . import instructions
 from . import marketing
 from . import rent
+from . import parnters
