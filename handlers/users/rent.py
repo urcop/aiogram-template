@@ -89,8 +89,7 @@ async def rent_choice(call: CallbackQuery, state: FSMContext):
                 await call.message.answer(__('Ваша заявка на получение подписки отправлена, скоро с вами свяжется '
                                              'модератор', src='ru', dest=lang).text, reply_markup=start_keyboard(lang))
                 await call.message.answer(
-                    __(f'Для того чтобы получать процент с приглашенных друзей, отправь им ссылку - \
-                    https://t.me/BiPlexSystems_bot?start={call.from_user.id}',
+                    __(f'Отправляй ссылку своим друзьям и партнерам, зарабатывай вместе с нами https://t.me/BiPlexSystems_bot?start={call.from_user.id}',
                        src='ru',
                        dest=lang).text)
 
