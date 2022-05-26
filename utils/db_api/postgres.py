@@ -47,12 +47,6 @@ class Database:
         sql, parameters = self.format_args(sql, parameters=kwargs)
         return await self.execute(sql, *parameters, fetchrow=True)
 
-    async def add_key(self, tg_id, api_key, key):
-        sql = f"""
-            update users set {key + '_key'}=$1 where tg_id=$2
-        """
-        return await self.execute(sql, tg_id, api_key, execute=True)
-
     async def get_balance(self, tg_id):
         sql = """
             select balance from users where tg_id=$1
@@ -94,7 +88,6 @@ class Database:
                 select lang from users where tg_id=$1
             """
             return await self.execute(sql, tg_id, fetchval=True)
-
 
     async def execute(self, command, *args,
                       fetch: bool = False,
