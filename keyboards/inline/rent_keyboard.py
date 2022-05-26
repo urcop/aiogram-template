@@ -9,19 +9,19 @@ rent_callback = CallbackData('user', 'rent')
 def rent_keyboard(lang):
     result = InlineKeyboardMarkup(inline_keyboard=[
         [
-            InlineKeyboardButton(__('1 месяц (30 USDT)', src='ru', dest=lang).text,
+            InlineKeyboardButton(__('Продлить 1 месяц (30 USDT)', src='ru', dest=lang).text,
                                  callback_data=rent_callback.new('rent1')),
         ],
         [
-            InlineKeyboardButton(__('2 месяца (55 USDT)', src='ru', dest=lang).text,
+            InlineKeyboardButton(__('Продлить 2 месяца (55 USDT)', src='ru', dest=lang).text,
                                  callback_data=rent_callback.new('rent2')),
         ],
         [
-            InlineKeyboardButton(__('3 месяца (75 USDT)', src='ru', dest=lang).text,
+            InlineKeyboardButton(__('Продлить 3 месяца (75 USDT)', src='ru', dest=lang).text,
                                  callback_data=rent_callback.new('rent3')),
         ],
         [
-            InlineKeyboardButton(__('Лицензия (200 USDT)', src='ru', dest=lang).text,
+            InlineKeyboardButton(__('Лицензия + 1 месяц (230 USDT)', src='ru', dest=lang).text,
                                  callback_data=rent_callback.new('rent12')),
         ],
     ], row_width=1)

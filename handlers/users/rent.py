@@ -42,7 +42,6 @@ async def enter_secret_key(message: types.Message, state: FSMContext):
     async with state.proxy() as data:
         try:
             data['api_key'] = str(message.text)
-            await db.add_key(data['api_key'], message.from_user.id, 'api')
             await message.answer(__('Вставьте ваш secret key', src='ru', dest=lang).text, reply_markup=cancel_button)
             await RentState.next()
         except Exception as e:
@@ -56,7 +55,6 @@ async def enter_secret_key(message: types.Message, state: FSMContext):
     async with state.proxy() as data:
         try:
             data['secret_key'] = str(message.text)
-            await db.add_key(data['secret_key'], message.from_user.id, 'secret')
             await RentState.next()
             await message.answer(
                 __('Успешно!', src='ru', dest=lang).text + '\n' + __('Выберите план:', src='ru', dest=lang).text,
