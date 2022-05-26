@@ -65,6 +65,6 @@ async def start(call: CallbackQuery, state: FSMContext):
         text = __(
             'BiPlexSystems - это полностью автоматизированная система, работающая на бирже Bibox на паре PLEX/USDT.\n\n',
             src='ru',
-            dest=data['lang'])
+            dest=data['lang']).text
         chanel = __('Наш телеграм канал - ', src='ru', dest=data["lang"]).text + ' https://t.me/BiPlexSystems'
-        await call.message.answer(text.text + '\n\n', reply_markup=start_keyboard(data['lang']))
+        await call.message.answer(text + '\n\n' + chanel, reply_markup=start_keyboard(data['lang']))
