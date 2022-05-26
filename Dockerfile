@@ -7,4 +7,4 @@ COPY requirements.txt /usr/src/app/"${BOT_NAME}"
 RUN pip install -r /usr/src/app/"${BOT_NAME}"/requirements.txt
 COPY . /usr/src/app/"${BOT_NAME}"
 
-CMD python3 -m bot
+CMD python3 app.py
