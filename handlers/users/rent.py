@@ -18,7 +18,7 @@ def rent_cost(rent):
         return 55
     elif rent == 'rent3':
         return 75
-    elif rent == 'rent12':
+    elif rent == 'rent13':
         return 230
 
 
