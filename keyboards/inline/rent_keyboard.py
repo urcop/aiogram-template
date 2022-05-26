@@ -21,7 +21,7 @@ def rent_keyboard(lang):
                                  callback_data=rent_callback.new('rent3')),
         ],
         [
-            InlineKeyboardButton(__('Лицензия + 1 месяц (230 USDT)', src='ru', dest=lang).text,
+            InlineKeyboardButton(__('Лицензия + 1 месяц (150 USDT)', src='ru', dest=lang).text,
                                  callback_data=rent_callback.new('rent13')),
         ],
     ], row_width=1)
