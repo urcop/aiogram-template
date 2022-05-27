@@ -12,5 +12,5 @@ async def partners(message: types.Message):
         referals[i]) + ' ' + __('партнеров', src='ru', dest=lang).text for i in
             range(0, 5)]
     text.append(__(f'Заработано всего - {earn} USDT', src='ru', dest=lang).text)
-    text.insert(0, __('Ваша реферальная ссылка -', src='ru', dest=lang).text + f' https://t.me/BiPlexSystems_bot?start={message.from_user.id}')
+    text.insert(0, __('Ваша реферальная ссылка -', src='ru', dest=lang).text + f' https://t.me/BiPlexSystems_bot?start={message.from_user.id}\n')
     await message.answer('\n'.join(text), disable_web_page_preview=True)
